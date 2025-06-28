@@ -55,7 +55,7 @@ import Sidebar from '../molecule/Sidebar.vue';
 import ShowDetail from '../molecule/ShowDetail.vue';
 import ShowUpdate from '../molecule/ShowUpdate.vue';
 import InputChamp from '../molecule/InputChamp.vue';
-import Liste from '@/services/DAOService';
+import DAOService from '@/services/DAOService';
 
 const daoServices = new DAOService();
 const tableHeaders = ['User', 'Entity', 'Options'];

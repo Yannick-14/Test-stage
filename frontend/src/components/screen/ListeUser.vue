@@ -68,7 +68,7 @@ import { ref } from 'vue';
 import Header from '../molecule/Header.vue'
 import Sidebar from '../molecule/Sidebar.vue';
 import Table from './Table.vue';
-import Liste from '@/services/DAOService';
+import DAOService from '@/services/DAOService';
 import { onMounted } from 'vue';
 import InputChamp from '../molecule/InputChamp.vue';
 
