@@ -72,7 +72,7 @@ import Liste from '@/services/DAOService';
 import { onMounted } from 'vue';
 import InputChamp from '../molecule/InputChamp.vue';
 
-const daoServices = new DAOService;
+const daoServices = new DAOService();
 
 const adminNavItems = [
   { name: 'Liste Entity', route: '/liste-entity' },

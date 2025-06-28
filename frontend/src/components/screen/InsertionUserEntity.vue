@@ -43,7 +43,7 @@ import Sidebar from '../molecule/Sidebar.vue'
 import SelectChamp from '../molecule/SelectChamp.vue'
 import Button from '../molecule/Button.vue'
 import { ref, onMounted } from 'vue'
-import Liste from '@/services/DAOService'
+import DAOService from '@/services/DAOService'
 import InsertionService from '@/services/InsertionService'
 
 const adminNavItems = [
@@ -56,7 +56,7 @@ const users = ref([])
 const entities = ref([])
 const selectedUser = ref('')
 const selectedEntities = ref([])
-const daoService = new DAOService;
+const daoService = new DAOService();
 const insertService = new InsertionService();
 
 onMounted(async () => {

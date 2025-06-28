@@ -80,7 +80,7 @@ import Sidebar from '../molecule/Sidebar.vue';
 import Liste from '@/services/DAOService';
 import { onMounted } from 'vue';
 
-const daoServices = new DAOService;
+const daoServices = new DAOService();
 
 const adminNavItems = [
   { name: 'Liste Entity', route: '/liste-entity' },

@@ -57,7 +57,7 @@ import ShowUpdate from '../molecule/ShowUpdate.vue';
 import InputChamp from '../molecule/InputChamp.vue';
 import Liste from '@/services/DAOService';
 
-const daoServices = new DAOService;
+const daoServices = new DAOService();
 const tableHeaders = ['User', 'Entity', 'Options'];
 const listeUserEntite = ref([]);
 const adminNavItems = [
