@@ -13,8 +13,9 @@
               <InputChamp label="Email" v-model="mailInsert" type="email" />
               <InputChamp label="Password" v-model="passwordInsert" type="password" />
               <button>Enregister</button>
+              <p>{{ reponse.message }}</p>
             </form>
-            <p>{{ reponse.message }}</p>
+            
         </div>
       </main>
     </div>
