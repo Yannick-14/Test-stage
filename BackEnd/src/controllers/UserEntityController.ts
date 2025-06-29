@@ -12,7 +12,7 @@ export class UserEntityController {
       });
       res.status(200).json(users);
     } catch (error) {
-      console.error(`❌ Erreur lors de la récupération pour userRepository :`, error);
+      console.error(`❌ Erreur lors de la récupération pour user entity :`, error);
       res.status(500).json({ message: `Erreur serveur ${error}` });
     }
   }
@@ -31,7 +31,7 @@ export class UserEntityController {
       });
       res.status(200).json(users);
     } catch (error) {
-      console.error(`❌ Erreur lors de la récupération pour userRepository :`, error);
+      console.error(`❌ Erreur lors de la récupération pour user entity :`, error);
       res.status(500).json({ message: `Erreur serveur ${error}` });
     }
   }
@@ -49,7 +49,7 @@ export class UserEntityController {
         userEntity: newUserEntity,
       });
     } catch (error) {
-      console.error("❌ Erreur lors de l'insertion de l'utilisateur :", error);
+      console.error("❌ Erreur lors de l'insertion de l' user entity :", error);
       res.status(500).json({ message: "Erreur serveur" });
     }
   }
@@ -78,7 +78,7 @@ export class UserEntityController {
       await userEntityRepository.save(userEntity);
 
       res.status(200).json({
-        message: "UserEntity mis à jour avec succès",
+        message: "Mise à jour avec succès",
         userEntity,
       });
     } catch (error) {
@@ -106,7 +106,7 @@ export class UserEntityController {
       await userEntityRepository.remove(userEntity);
 
       res.status(200).json({
-        message: `UserEntity avec l'ID ${id} supprimé avec succès`,
+        message: `User entity supprimé avec succès pour ${id}`,
       });
     } catch (error) {
       console.error("❌ Erreur lors de la suppression de l'UserEntity :", error);

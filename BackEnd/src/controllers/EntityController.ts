@@ -74,7 +74,7 @@ export class EntityController {
       await repositoryEntity.save(entity);
 
       res.status(200).json({
-        message: "Entité mise à jour avec succès",
+        message: "Mise à jour avec succès",
         entity,
       });
     } catch (error) {

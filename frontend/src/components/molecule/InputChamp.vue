@@ -1,6 +1,6 @@
 <template>
     <div class="input">
-        <input :placeholder="label" :type="type" :id="name" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
+        <input :placeholder="label" :type="type" :id="name" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" required>
     </div>
 </template>
 

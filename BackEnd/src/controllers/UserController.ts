@@ -31,7 +31,7 @@ export class UserController {
 
       res.status(200).json(user);
     } catch (error) {
-      console.error("Erreur lors de la récupération de l'entité :", error);
+      console.error("Erreur lors de la récupération de l'utilisateur :", error);
       res.status(500).json({ message: "Erreur serveur", error: (error as Error).message });
     }
   }
