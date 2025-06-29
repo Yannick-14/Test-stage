@@ -13,7 +13,6 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const envFilePath = path.resolve(__dirname, '../.env');
 
-// Fonction utilitaire pour mettre à jour une clé dans le fichier .env
 async function updateEnvKey(key: string, value: string | boolean) {
     let envContent = '';
 
@@ -31,7 +30,7 @@ async function updateEnvKey(key: string, value: string | boolean) {
     }
 
     fs.writeFileSync(envFilePath, envLines.join('\n') + '\n', 'utf8');
-    dotenv.config({ override: true }); // recharge
+    dotenv.config({ override: true });
 }
 
 async function updateDotEnvFile(value: boolean) {
@@ -63,15 +62,14 @@ async function startServer() {
             res.status(500).send('Erreur serveur');
         });
 
-        //  Ajout de la vérification DB_SERVEUR == 0
-        // if (process.env.DB_SYNCHRONIZE === 'false' && process.env.DB_SERVEUR === '0') {
-        //     console.log("DB_SYNCHRONIZE False & DB_SERVEUR == 0");
-        //     await updateDotEnvFile(true);
-        //     startServer();
-        //     return;
-        // }
+        if (process.env.DB_SYNCHRONIZE === 'false' && process.env.DB_SERVEUR === '0') {
+            console.log("DB_SYNCHRONIZE False & DB_SERVEUR == 0");
+            await updateDotEnvFile(true);
+            startServer();
+            return;
+        }
 
-        const port = process.env.DB_PORT || 3001;
+        const port = process.env.PORT_SERVEUR || 3001;
         server = app.listen(port, () => {
             console.log(`Serveur running on port http://localhost:${port}`);
         });
@@ -81,7 +79,7 @@ async function startServer() {
             console.warn("Table existing. Disabling synchronization and restarting server...");
             try {
                 await updateDotEnvFile(false);
-                await updateEnvKey('DB_SERVEUR', '1'); //  mise à jour de DB_SERVEUR = 1
+                await updateEnvKey('DB_SERVEUR', '1');
                 console.log("Updated .env: DB_SYNCHRONIZE=false, DB_SERVEUR=1");
 
                 console.log("Restarting server...");
