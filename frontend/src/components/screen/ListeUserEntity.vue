@@ -38,8 +38,19 @@
           </ShowDetail>
 
           <ShowUpdate :showModal="showUpdateModal" @close="closeUpdateModal" @submit="submitUpdate">
-            <InputChamp v-model="updateForm.user_ID" label="User ID" />
-            <InputChamp v-model="updateForm.entity_ID" label="Entity ID" />
+            <select v-model="updateForm.user_ID">
+      <option v-for="user in users" :key="user.id_User" :value="user.id_User">
+        {{ user.userName }}
+      </option>
+    </select>
+
+
+            <select v-model="updateForm.entity_ID">
+      <option v-for="entity in entities" :key="entity.id_Entity" :value="entity.id_Entity">
+        {{ entity.name }}
+      </option>
+    </select>
+            
           </ShowUpdate>
         </div>
       </main>
@@ -68,6 +79,9 @@ const adminNavItems = [
 
 const showDetailModal = ref(false);
 const showUpdateModal = ref(false);
+const users = ref([]);
+const entities = ref([]);
+  
 const selectedUserEntity = ref(null);
 const updateForm = ref({
   user_ID: '',
@@ -78,6 +92,8 @@ const errorMessage = ref('');
 onMounted(async () => {
   try {
     listeUserEntite.value = await daoServices.findAllUserEntity();
+    users.value = await daoServices.findAllUser();
+    entities.value = await daoServices.findAllEntity();
   } catch (error) {
     console.error('Erreur lors du chargement des données:', error);
     errorMessage.value = 'Une erreur s’est produite lors du chargement des données.';
